@@ -1,0 +1,23 @@
+.details{
+   text-align : center;
+}
+
+mat-grid-tile{
+    flex-direction: column;
+    background-color: bisque;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+h2{
+    font-size: large;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+p{
+    font-weight: bold;
+    font-style: italic;
+}

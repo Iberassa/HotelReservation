@@ -1,0 +1,16 @@
+<div class="details">
+    <h2>{{roomType}}</h2>
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile>
+            <div>
+            <p>Max capacity: {{describeRoom.capacity}}</p>
+            <p>Price: {{describeRoom.price}}</p>
+            <p>Pets: {{describeRoom.pets}}</p>
+            <p>Break Fast: {{describeRoom.breakFast}}</p>
+            <button mat-stroked-button (click)="goToRoom()">Go To Rooms</button>
+        </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+
+</div>

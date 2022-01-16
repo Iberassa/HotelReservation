@@ -1,0 +1,11 @@
+<div>
+    <mat-toolbar color="primary" class="navbar">
+        <div>
+            <span (click)="home()" class="homebutton">Hotel</span>
+        </div>
+        <div [hidden]="hideLoginButton">
+            <button mat-raised-button (click)="login()">Login</button>
+        </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</div>

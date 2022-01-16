@@ -1,0 +1,31 @@
+<div>
+    <mat-grid-list cols="1" gutterSize="10px" class="welcomeContainer">
+        <mat-grid-tile colspan="1">
+            <img src="assets/Images/home.jfif" class="homeImage">
+            <h1 class="mat-display-4">Welcome</h1>
+            <button mat-stroked-button (click)="goToRoom()">View Rooms</button>
+        </mat-grid-tile>
+    </mat-grid-list><br />
+    <div class="roomImg">
+        <mat-grid-list cols="4" gutterSize="20px">
+            <h1 class="mat-display-2">Featured Rooms</h1>
+            <mat-grid-tile (click)="description('Single')">
+                <h1 class="roomNames">Single</h1>
+                <img src="assets/Images/single.jpg" class="homeImage">
+            </mat-grid-tile>
+            <mat-grid-tile (click)="description('Double')">
+                <h1 class="roomNames">Double</h1>
+                <img src="assets/Images/doubleRooms.jpg" class="homeImage">
+            </mat-grid-tile>
+            <mat-grid-tile (click)="description('Family')">
+                <h1 class="roomNames">Family</h1>
+                <img src="assets/Images/familybedroom.png" class="homeImage">
+            </mat-grid-tile>
+            <mat-grid-tile (click)="description('Sweet')">
+                <h1 class="roomNames">Sweet</h1>
+                <img src="assets/Images/sweetRoom.jpg" class="homeImage">
+            </mat-grid-tile>
+        </mat-grid-list><br/>
+    </div>
+    <router-outlet></router-outlet>
+</div>
