@@ -1,0 +1,36 @@
+<div class="addRoom">
+    <form [formGroup]="addRoomForm">
+        <h1>Add new room</h1>
+        <div>
+            <mat-form-field>
+                <mat-label for="roomName">Room Name</mat-label>
+                <input matInput type="text" formControlName="roomName">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label for="roomStandard">Standard</mat-label>
+                <input type="text" matInput formControlName="roomStandard">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label for="roomNumber">Room Number</mat-label>
+                <input matInput type="number" formControlName="roomNumber">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label for="numberOfGuests">Number of guests</mat-label>
+                <input type="number" matInput formControlName="numberOfGuests">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label for="price">Price</mat-label>
+                <input type="number" matInput formControlName="price">
+            </mat-form-field>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</div>

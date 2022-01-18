@@ -1,0 +1,5 @@
+<div>
+    <app-room *ngFor="let room of rooms" [room]="room"></app-room>
+    <button mat-stroked-button [hidden]="adminShow" (click)="addRoomForm()">Add Room</button>
+    <button mat-stroked-button [hidden]="adminShow" (click)="showAdminUser()">Users</button>
+</div>

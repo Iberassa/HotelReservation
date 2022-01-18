@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use('/booking', bookingRouter);
 app.use('/users', usersRouter);
-app.use('/room',roomRouter);
+app.use('/rooms',roomRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

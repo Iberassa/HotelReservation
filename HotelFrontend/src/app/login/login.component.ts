@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
   loginSubscriptions?:Subscription;
   passwordHide:Boolean = true;
-
+min=new Date()
   constructor(private formBuilder:FormBuilder, private router:Router) { 
     this.loginForm = this.formBuilder.group({
       'email':['',[Validators.required,Validators.email]],
@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
   returnHome(){
     this.router.navigate(['/']);
   }
+
+
 
 
 }

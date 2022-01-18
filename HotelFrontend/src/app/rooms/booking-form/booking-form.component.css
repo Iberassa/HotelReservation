@@ -1,0 +1,14 @@
+.bookingbody{
+    text-align: center;
+}
+
+.bookingbody h1{
+    font-weight: 1000px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.date{
+    justify-content: center ;
+    align-items: center;
+    margin-left: 25%;
+}

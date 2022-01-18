@@ -1,0 +1,13 @@
+<div>
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile>
+            <div>
+            <p>Room Number: {{user.fullname}}</p>
+            <p>Room Name: {{user.email}}</p>
+            <p>Room Standard: {{user.phone}}</p>
+            <p>Number Of Guests: {{user.role}}</p>
+            <button mat-stroked-button (click)="updateUser()">Update</button>
+           </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

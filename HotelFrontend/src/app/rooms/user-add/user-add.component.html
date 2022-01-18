@@ -1,0 +1,43 @@
+<div class="addUser">
+    <form [formGroup]="userAddForm" (ngSubmit)="submitUser()">
+        <h1>Update User</h1>
+        <div>
+            <mat-form-field>
+                <mat-label for="fullname">Full Name</mat-label>
+                <input matInput type="text" formControlName="fullname">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label for="email">Email</mat-label>
+                <input type="text" matInput formControlName="email">
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field>
+                <mat-label for="phone">Phone</mat-label>
+                <input matInput formControlName="phone" oninput="if(value.length>10){
+                    value = value.slice(0,10);
+                  }" type="number">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+            <mat-label for="role">Role</mat-label>
+            <mat-select formControlName="role">
+                <mat-option *ngFor="let role of workerRole" [value]="role">{{role}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        </div>
+        <div>
+            <mat-radio-group formControlName="active">
+                <mat-radio-button [value]="userActive">Active</mat-radio-button>
+                <mat-radio-button [value]="!userActive">Inactive</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <button mat-stroked-button type="submit" [disabled]="!userAddForm.valid">Submit</button>
+    </form>
+    <button mat-stroked-button (click)="userList()">Users</button>
+</div>
+

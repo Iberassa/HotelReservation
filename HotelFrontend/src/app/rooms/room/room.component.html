@@ -1,0 +1,17 @@
+<div>
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile>
+            <div>
+            <p>Room Number: {{room.roomNumber}}</p>
+            <p>Room Name: {{room.price}}</p>
+            <p>Room Standard: {{room.pets}}</p>
+            <p>Number Of Guests: {{room.numberOfGuests}}</p>
+            <p>Description : {{room.description}}</p>
+            <p>Price: {{room.price}}</p>
+            <button mat-stroked-button (click)="bookForm">Book Room</button>
+            <button mat-stroked-button [hidden]="adminsButtons" (click)="releaveRoom">Releave</button>
+            <button mat-stroked-button [hidden]="adminsButtons" (click)="closeRoom">Remove Room</button>
+        </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

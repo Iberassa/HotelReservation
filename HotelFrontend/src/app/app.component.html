@@ -1,7 +1,9 @@
 <div>
     <mat-toolbar color="primary" class="navbar">
         <div>
-            <span (click)="home()" class="homebutton">Hotel</span>
+            <span (click)="home()" class="homebutton">
+                <mat-icon>home</mat-icon> IZ Hotel
+            </span>
         </div>
         <div [hidden]="hideLoginButton">
             <button mat-raised-button (click)="login()">Login</button>

@@ -24,7 +24,7 @@ export class RoomDescriptionComponent implements OnInit {
   }
 
   goToRoom(){
-    console.log("goto");
+    this.router.navigate(['/','rooms'])
   }
 
 }

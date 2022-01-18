@@ -12,7 +12,8 @@ const routes: Routes = [];
     {path:'',component:HomeComponent, children:[
       {path:'description/:room',component:RoomDescriptionComponent}
     ]},
-    {path:'login',component:LoginComponent}
+    {path:'login',component:LoginComponent},
+    {path:'rooms',loadChildren:()=>import('./rooms/rooms.module').then(m=>m.RoomsModule)}
   ])],
   exports: [RouterModule]
 })
