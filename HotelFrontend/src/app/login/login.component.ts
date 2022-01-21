@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,11 @@ import { Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   loginForm!:FormGroup;
+  stateSubscription!:Subscription;
   loginSubscriptions?:Subscription;
-  passwordHide:Boolean = true;
+  errorHide=true;
 min=new Date()
-  constructor(private formBuilder:FormBuilder, private router:Router) { 
+  constructor(private formBuilder:FormBuilder, private router:Router, private loginService:LoginService) { 
     this.loginForm = this.formBuilder.group({
       'email':['',[Validators.required,Validators.email]],
       'password':['',Validators.required]
@@ -24,7 +26,15 @@ min=new Date()
   }
 
   submit(){
-    console.log("Submitted")
+     this.loginSubscriptions = this.loginService.login(this.loginForm.value).subscribe((data:any)=>{
+      if(!data.Success){
+        this.errorHide = !this.errorHide;
+      }else{
+
+        localStorage.setItem('token',`Berear ${data.token}`);
+        this.router.navigate(['/'])
+      }
+    })
   }
 
   returnHome(){
@@ -32,6 +42,9 @@ min=new Date()
   }
 
 
+  ngOnDestroy(){
+    this.loginSubscriptions?.unsubscribe();
+  }
 
 
 }

@@ -5,3 +5,13 @@
 .homebutton{
     cursor: pointer;
 }
+
+.footer{
+    background-color:#7F00FF;
+    padding:10px;
+    text-align:center;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    width: 98.7%;
+  }

@@ -4,13 +4,10 @@ const router = express.Router();
 const roomController = require('../controller/room');
 
 router.get('',roomController.getAllRooms);
+router.get('/all',roomController.getRoomsForAdmin);
 router.get('/:roomId',roomController.getSingleRoom);
-router.get('/openRooms', roomController.getOpenRooms);
-router.get('/:roomName',roomController.getRoomsByType);
-router.get('/:standard',roomController.getRoomByStandard);
-
-
-router.post('/add',roomController.addRoom);
+router.get('/name/:roomName',roomController.getRoomsByType);
+router.get('/standard/:standard',roomController.getRoomByStandard);
 
 
 router.put('/update/:roomId',roomController.updateRoom);

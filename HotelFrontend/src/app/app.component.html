@@ -8,6 +8,10 @@
         <div [hidden]="hideLoginButton">
             <button mat-raised-button (click)="login()">Login</button>
         </div>
+        <div [hidden]="hideLogoutButton">
+            <button mat-raised-button (click)="logout()">Logout</button>
+        </div>
     </mat-toolbar>
-    <router-outlet></router-outlet>
+    <router-outlet></router-outlet><br/><br/><br/>
+    <div class="footer">copy right</div>
 </div>

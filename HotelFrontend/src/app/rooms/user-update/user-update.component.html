@@ -1,4 +1,5 @@
 <div class="updateUser">
+    <button mat-mini-fab class="back" (click)="userList()">Back</button>
     <form [formGroup]="userUpdateForm" (ngSubmit)="submitUpdate()">
         <h1>Update User</h1>
         <div>
@@ -38,5 +39,4 @@
         </div>
         <button mat-stroked-button type="submit" [disabled]="!userUpdateForm.valid">Submit</button>
     </form>
-    <button mat-stroked-button (click)="userList()">Users</button>
 </div>

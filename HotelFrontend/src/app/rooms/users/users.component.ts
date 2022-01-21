@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from '../user.service';
@@ -9,12 +10,16 @@ import { UserService } from '../user.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  p=1;
   users:any = [];
   userServiceSubscription!:Subscription;
+  searchFormGroup!:FormGroup
 
-  constructor(private router:Router, private userService:UserService) {
+  constructor(private router:Router, private userService:UserService,private formBuilder:FormBuilder) {
+    this.searchFormGroup = this.formBuilder.group({
+      'search':['']
+    })
     this.userServiceSubscription = this.userService.getAllUsers().subscribe((data:any)=>{
-      console.log(data);
       this.users=[...data.result];
     })
    }
@@ -22,8 +27,13 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  back(){
+    this.router.navigate(['/','rooms']);
+  }
+
+
   addUser(){
-    this.router.navigate(['/','rooms','add-user'])
+    this.router.navigate(['/','rooms','users','add-user'])
   }
 
 }

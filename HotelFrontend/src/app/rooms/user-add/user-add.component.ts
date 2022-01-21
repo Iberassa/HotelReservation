@@ -13,7 +13,7 @@ export class UserAddComponent implements OnInit {
   userAddForm!:FormGroup;
   userAddSubscription!:Subscription;
   userAddServiceSubscription!:Subscription;
-  workerRole=['admin','worker'];
+  workerRole=['admin','user'];
   userActive=true;
 
   constructor(private router:Router,private userService:UserService, private formBuilder:FormBuilder) {
@@ -22,8 +22,6 @@ export class UserAddComponent implements OnInit {
       'email':['',[Validators.required,Validators.email]],
       'password':['',Validators.required],
       'phone':['',Validators.required],
-      'role':['',Validators.required],
-      'active':['',Validators.required]
     })
    }
 
@@ -34,6 +32,7 @@ export class UserAddComponent implements OnInit {
     this.userAddServiceSubscription = this.userService.addUser(this.userAddForm.value).subscribe((data)=>{
       console.log(data);
     })
+    this.userAddForm.reset();
   }
 
   userList(){

@@ -1,5 +1,21 @@
 <div>
-    <app-room *ngFor="let room of rooms" [room]="room"></app-room>
-    <button mat-stroked-button [hidden]="adminShow" (click)="addRoomForm()">Add Room</button>
-    <button mat-stroked-button [hidden]="adminShow" (click)="showAdminUser()">Users</button>
+    <button mat-mini-fab (click)="back()" class="backButton">Back</button><br />
+    <form [formGroup]="searchFormGroup">
+        <div>
+            <mat-form-field>
+                <mat-label for="search">Search By Room Name</mat-label>
+                <input matInput type="text" formControlName="search">
+            </mat-form-field>
+        </div>
+    </form>
+    <h1>Rooms</h1>
+    <div>
+        <app-room *ngFor="let room of rooms
+    | filter : searchFormGroup.value.search
+    | paginate : {itemsPerPage:3,currentPage:p}" [room]="room"></app-room>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <button mat-stroked-button [class.is-hidden]="adminShow" (click)="addRoomForm()">Add Room</button>
+    <button mat-stroked-button [class.is-hidden]="adminShow" (click)="showAdminUser()">Users</button>
 </div>
+

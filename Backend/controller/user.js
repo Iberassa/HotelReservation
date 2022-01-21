@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const User = require('../model/users');
 
@@ -21,7 +22,7 @@ exports.signup = async (req, res, next) => {
             })
             await user.save();
             const signupUser = await User.findOne({ email: email }, ['_id', 'role']);
-            const token = jwt.sign({ email, role: signupUser.role, _id: signupUser._id, fullname }, "sec");
+            const token = jwt.sign({ email, role: signupUser.role, _id: signupUser._id, fullname },process.env.SECRET_KEY );
             res.status(201).json({ Success: true, token });
         }
     } catch (err) {
@@ -32,14 +33,14 @@ exports.signup = async (req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        const userExist = User.findOne({ email: email });
+        const userExist =await User.findOne({ email: email });
         if (!userExist) {
             res.status(401).json({ Success: false, result: "Authorization Failed" })
         } else {
             const passwordCheck = await bcrypt.compare(password, userExist.password);
             const { _id, fullname, phone, email, role, active } = userExist;
             if (passwordCheck) {
-                const token = jwt.sign({ _id, email, fullname, phone, role, active }, "sec");
+                const token = jwt.sign({ _id, email, fullname, phone, role, active }, process.env.SECRET_KEY);
                 res.status(201).json({ Success: true, token });
             } else {
                 res.status(401).json({ Success: false, result: "Authorization Failed" })
@@ -50,13 +51,12 @@ exports.login = async (req, res, next) => {
     }
 }
 
-
-exports.authorize = async (req, res, next) => {
+exports.authorize = async (req, res, next)=>{
     try {
-        const authorizationHeader = req.header.authorization;
+        const authorizationHeader = req.headers.authorization;
         if (authorizationHeader) {
             const token = authorizationHeader.split(' ')[1];
-            jwt.verify(token, "sec", (err, decode) => {
+            jwt.verify(token, process.env.SECRET_KEY, (err, decode) => {
                 if (err) {
                     res.status(403).json({ Success: false, error: 'Forbidden' })
                 }
@@ -71,14 +71,14 @@ exports.authorize = async (req, res, next) => {
     }
 }
 
+
 exports.getAllUsers = async (req, res, next) => {
     try {
-        const { email } = req.body
-        const users = await User.find({ email });
+        const users = await User.find();
         if (!users) {
             res.status(204).json({ Success: true, result:null })
-        } else if (user.role !== "admin") {
-            res.status(403).json({ Success: false, error: "Forbidden" })
+        // } else if (users.role !== "user") {
+        //     res.status(403).json({ Success: false, error: "Forbidden" })
         } else {
             const users = await User.find()
             res.status(200).json({ Success: true, result: users });

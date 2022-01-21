@@ -17,10 +17,8 @@ export class AddRoomComponent implements OnInit {
   constructor(private router:Router,private formBuilder:FormBuilder,private roomService:GetRoomsService) { 
     this.addRoomForm = this.formBuilder.group({
       'roomName':['',Validators.required],
-      'roomStandard':['',Validators.required],
       'roomNumber':['',Validators.required],
       'numberOfGuests':['',Validators.required],
-      'description':['',Validators.required],
       'price':['',Validators.required],
     })
   }
@@ -32,6 +30,15 @@ export class AddRoomComponent implements OnInit {
     this.addRoomServiceSubscription= this.roomService.addNewRoom(this.addRoomForm.value).subscribe((data:any)=>{
       console.log(data);
     })
+    this.addRoomForm.reset()
+  }
+
+  back(){
+    this.router.navigate(['/','rooms'])
+  }
+
+  ngOnDestroy(){
+    this.addRoomServiceSubscription?.unsubscribe();
   }
 
 }

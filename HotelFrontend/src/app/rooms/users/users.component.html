@@ -1,4 +1,19 @@
 <div>
-    <app-user *ngFor="let user of users" [user]="user"></app-user>
-    <button mat-stroked-button (click)="addUser">Add User</button>
+    <button mat-mini-fab (click)="back()" class="backButton">Back</button>
+    <form [formGroup]="searchFormGroup">
+        <div>
+            <mat-form-field>
+                <mat-label for="search">Search By Full Name or Email</mat-label>
+                <input matInput type="text" formControlName="search">
+            </mat-form-field>
+        </div>
+    </form>
+    <h1>Users</h1>
+    <div>
+        <app-user *ngFor="let user of users 
+    | filterUser : searchFormGroup.value.search 
+    | paginate : {itemsPerPage:3,currentPage:p}" [user]="user"></app-user>
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <button mat-stroked-button (click)="addUser()">Add User</button>
 </div>

@@ -4,10 +4,10 @@ const Booking = mongoose.model('Booking',{
     roomNumber:Number,
     roomId:String,
     guestEmail:String,
-    guestId:String,
     guestName:String,
-    dateIn:Number,
-    dateOut:Number,
+    phone:Number,
+    dateIn:Object,
+    dateOut:Object,
     left:Boolean
 })
 

@@ -1,16 +1,11 @@
 <div class="addRoom">
-    <form [formGroup]="addRoomForm">
+    <button mat-mini-fab (click)="back()" class="backButton">Back</button>
+    <form [formGroup]="addRoomForm" (ngSubmit)="submit()">
         <h1>Add new room</h1>
         <div>
             <mat-form-field>
                 <mat-label for="roomName">Room Name</mat-label>
                 <input matInput type="text" formControlName="roomName">
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <mat-label for="roomStandard">Standard</mat-label>
-                <input type="text" matInput formControlName="roomStandard">
             </mat-form-field>
         </div>
         <div>
@@ -31,6 +26,6 @@
                 <input type="number" matInput formControlName="price">
             </mat-form-field>
         </div>
-        <button type="submit">Add</button>
+        <button mat-stroked-button type="submit" [disabled]="!addRoomForm.valid">Add</button>
     </form>
 </div>

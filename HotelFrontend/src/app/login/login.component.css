@@ -6,3 +6,12 @@
     font-weight: 1000px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.ishidden{
+    display: none;
+}
+
+h3{
+    color: red;
+}
+

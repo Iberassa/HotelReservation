@@ -1,13 +1,13 @@
 <div>
     <mat-grid-list cols="2" rowHeight="200px">
         <mat-grid-tile>
-            <div>
-            <p>Room Number: {{user.fullname}}</p>
-            <p>Room Name: {{user.email}}</p>
-            <p>Room Standard: {{user.phone}}</p>
-            <p>Number Of Guests: {{user.role}}</p>
+            <div [ngStyle]="{'color': !user.active ? 'red':'' }">
+            <p>Full Name: {{user.fullname}}</p>
+            <p>Email: {{user.email}}</p>
+            <p>Phone: {{user.phone}}</p>
+            <p>Role: {{user.role}}</p>
             <button mat-stroked-button (click)="updateUser()">Update</button>
            </div>
         </mat-grid-tile>
     </mat-grid-list>
-</div>
+</div><br/>

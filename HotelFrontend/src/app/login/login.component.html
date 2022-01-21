@@ -11,14 +11,11 @@
             <mat-form-field>
                 <mat-label for="password">Password</mat-label>
                 <input matInput type="password" formControlName="password">
-                <!-- <button mat-icon-button matSuffix (click)="passwordHide = !passwordHide"
-                    [attr.aria-label]="'Hide password'" [attr.arial-pressed]="passwordHide">
-                    <mat-icon>{{passwordHide?'visibility_off' : 'visibility'}}</mat-icon>
-                </button> -->
             </mat-form-field>
         </div>
         <div>
             <button mat-stroked-button type="submit" [disabled]="!loginForm.valid">login</button>
         </div>
     </form>
+    <h3 [class.ishidden]="errorHide" >Invalid Username or password</h3>
 </div>

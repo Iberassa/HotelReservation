@@ -1,6 +1,7 @@
 <div class="addUser">
+    <button mat-mini-fab class="backButton" (click)="userList()">Back</button>
     <form [formGroup]="userAddForm" (ngSubmit)="submitUser()">
-        <h1>Update User</h1>
+        <h1>Add User</h1>
         <div>
             <mat-form-field>
                 <mat-label for="fullname">Full Name</mat-label>
@@ -13,7 +14,12 @@
                 <input type="text" matInput formControlName="email">
             </mat-form-field>
         </div>
-        
+        <div>
+            <mat-form-field>
+                <mat-label for="password">password</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+        </div>
         <div>
             <mat-form-field>
                 <mat-label for="phone">Phone</mat-label>
@@ -22,22 +28,7 @@
                   }" type="number">
             </mat-form-field>
         </div>
-        <div>
-            <mat-form-field>
-            <mat-label for="role">Role</mat-label>
-            <mat-select formControlName="role">
-                <mat-option *ngFor="let role of workerRole" [value]="role">{{role}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        </div>
-        <div>
-            <mat-radio-group formControlName="active">
-                <mat-radio-button [value]="userActive">Active</mat-radio-button>
-                <mat-radio-button [value]="!userActive">Inactive</mat-radio-button>
-            </mat-radio-group>
-        </div>
         <button mat-stroked-button type="submit" [disabled]="!userAddForm.valid">Submit</button>
     </form>
-    <button mat-stroked-button (click)="userList()">Users</button>
 </div>
 

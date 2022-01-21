@@ -14,7 +14,7 @@ export class UserUpdateComponent implements OnInit {
   userUpdateForm!: FormGroup;
   routeSubscription!: Subscription;
   submitSubscription!: Subscription;
-  workerRole=['admin','worker'];
+  workerRole=['admin','user'];
   userActive=true;
 
   constructor(private router: Router, private activatedRouter: ActivatedRoute, private formBuilder: FormBuilder,
@@ -23,10 +23,10 @@ export class UserUpdateComponent implements OnInit {
       this.user = { ...this.router.getCurrentNavigation()?.extras.state };
     })
     this.userUpdateForm = this.formBuilder.group({
-      'fullname': [this.user.fullname, Validators.required],
-      'email': [this.user.email, [Validators.required, Validators.email]],
-      'phone': [this.user.phone, Validators.required],
-      'role': [this.user.role, Validators.required],
+      'fullname': [`${this.user.fullname}`, Validators.required],
+      'email': [`${this.user.email}`, [Validators.required, Validators.email]],
+      'phone': [`${this.user.phone}`, Validators.required],
+      'role': [`${this.user.role}`, Validators.required],
       'active': [this.user.active, Validators.required]
     })
   }
@@ -35,13 +35,20 @@ export class UserUpdateComponent implements OnInit {
   }
 
   submitUpdate() {
-    this.submitSubscription = this.userService.updateUser(this.userUpdateForm.value).subscribe((data:any)=>{
+    const newUser = {...this.userUpdateForm.value,_id:this.user._id}
+    this.submitSubscription = this.userService.updateUser(newUser).subscribe((data:any)=>{
       console.log(data);
     })
+    this.userUpdateForm.reset();
   }
 
   userList(){
     this.router.navigate(['/','rooms','users'])
+  }
+
+  ngOnDestroy(){
+    this.routeSubscription?.unsubscribe();
+    this.submitSubscription?.unsubscribe();
   }
 
 }
